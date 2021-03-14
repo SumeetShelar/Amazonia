@@ -1,10 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+Thambi+2&family=Raleway&family=Rubik&display=swap");
 /*      Sass Template       */
+/*      Global Classes      */
 button, button:focus {
   outline: none !important;
   box-shadow: none !important;
 }
 
+/*      Typography Classes      */
 .font-baloo {
   font-family: "Baloo Thambi 2", cursive;
 }
@@ -33,6 +35,7 @@ button, button:focus {
   font-size: 20px;
 }
 
+/*      Color Template      */
 .color-primary {
   color: #003859;
 }
@@ -57,6 +60,7 @@ button, button:focus {
   background: #FFD289;
 }
 
+/*      Top Sale Template       */
 #top-sale .owl-carousel .item .product a {
   overflow: hidden;
 }
@@ -88,6 +92,12 @@ button, button:focus {
 }
 #top-sale .owl-carousel .owl-nav button.owl-next span {
   margin-right: -4rem;
+}
+
+/*      Special Price Template      */
+#special-price .grid .grid-item {
+  margin-right: 1.2rem;
+  margin-top: 1rem;
 }
 
 /*# sourceMappingURL=style.css.map */
