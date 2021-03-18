@@ -51,5 +51,19 @@ $(document).ready(function(){
                 items: 5
             }
         }
-    }) 
+    })
+    
+    $("#blogs .owl-carousel").owlCarousel({
+        loops: true,
+        nav: false,
+        dots: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 3
+            }
+        }
+    })
 });
