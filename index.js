@@ -30,8 +30,26 @@ $(document).ready(function(){
     });
 
     //Filter items on Button click
-     $(".button-group").on("click","button",function(){
-         var filterValue = $(this).attr('data-filter');
-         $grid.isotope({filter: filterValue});
-     })
+    $(".button-group").on("click","button",function(){
+        var filterValue = $(this).attr('data-filter');
+        $grid.isotope({filter: filterValue});
+    })
+    
+    //New phones Owl Carousel
+    $("#new-phones .owl-carousel").owlCarousel({
+        loops: true,
+        nav: false,
+        dots: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 3
+            },
+            1000: {
+                items: 5
+            }
+        }
+    }) 
 });
