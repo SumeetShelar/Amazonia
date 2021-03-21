@@ -3,15 +3,23 @@
 ?>
 
 <!--Special Price-->
+<?PHP
+    $brand = array_map(function ($pro){return $pro['item_brand'];}, $product_shuffle);
+    $unique = array_unique($brand);
+    sort($unique);
+?>
+
 <section id="special-price">
 <div class="container">
 <h4 class="font-rubik font-size-20">Special Price</h4>
 <!--Brand Button Group-->
 <div id="filters" class="button-group text-right font-baloo font-size-16">
 <button class="btn is-checked" data-filter="*">All Brands</button>
-<button class="btn" data-filter=".Apple">Apple</button>
-<button class="btn" data-filter=".Samsung">Samsung</button>
-<button class="btn" data-filter=".Redmi">Redmi</button>
+<?PHP
+    array_map(function($brand){
+        printf('<button class="btn" data-filter=".%s">%s</button>',$brand,$brand);
+    }, $unique);
+?>
 </div>
 <!--!Brand Button Group-->
 
