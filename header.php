@@ -16,6 +16,10 @@
     <!--Custom CSS file-->
     <link rel="stylesheet" href="style.css">
 
+    <?PHP
+      // require functions.php file
+      require('functions.php');
+    ?>
 </head>
 <body>
     <!--start #header-->
