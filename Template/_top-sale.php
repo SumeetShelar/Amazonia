@@ -2,7 +2,6 @@
     $product_shuffle = $product->getData();
 ?>
 
-
 <!--Top Sale-->
 <section id="top-sale">
 <div class="container py-5">
@@ -24,7 +23,7 @@
             <span><i class="far fa-star"></i></span>
             </div>
             <div class="price py-2">
-            <span>Rs<?PHP echo $item['item_price'] ?? '0'; ?></span>
+            <span>Rs&nbsp;<?PHP echo $item['item_price'] ?? '0'; ?></span>
             </div>
             <button type="submit" class="btn btn-warning font-size-12">Add to cart</button>
         </div>
