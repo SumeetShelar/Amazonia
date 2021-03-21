@@ -1,14 +1,12 @@
 <?PHP
     $product_shuffle = $product->getData();
-?>
-
-<!--Special Price-->
-<?PHP
+    shuffle($product_shuffle);
     $brand = array_map(function ($pro){return $pro['item_brand'];}, $product_shuffle);
     $unique = array_unique($brand);
     sort($unique);
 ?>
 
+<!--Special Price-->
 <section id="special-price">
 <div class="container">
 <h4 class="font-rubik font-size-20">Special Price</h4>

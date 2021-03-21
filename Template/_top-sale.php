@@ -1,5 +1,6 @@
 <?PHP
     $product_shuffle = $product->getData();
+    shuffle($product_shuffle);
 ?>
 
 <!--Top Sale-->
