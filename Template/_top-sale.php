@@ -1,5 +1,4 @@
 <?PHP
-    $product_shuffle = $product->getData();
     shuffle($product_shuffle);
 
     // request method post
