@@ -4,6 +4,8 @@
             $deletedRecord = $Cart->deleteCart($_POST['item_id']);
         }
     }
+
+    $in_cart = $Cart->getCartid($product->getData('cart'));
 ?>
 
 <!--Shopping Cart-->
@@ -17,7 +19,7 @@
         <?PHP 
             foreach($product->getData('cart') as $item) :
                 $cart = $product->getProduct($item['item_id']);
-                $subTotal[] = array_map(function ($item) {
+                $subTotal[] = array_map(function ($item) use($in_cart) {
         ?>
         <div class="row border-top py-3 my-4">
             <div class="col-sm-2">

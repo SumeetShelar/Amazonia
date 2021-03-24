@@ -64,6 +64,16 @@ class Cart{
         }
         return $result;
     }
+
+    // get item_id of Shopping cart list
+    public function getCartid($cartArray = null, $key = "item_id") {
+        if($cartArray != null) {
+            $cart_id = array_map(function ($value) use($key) {
+                return $value[$key];
+            }, $cartArray);
+            return $cart_id;
+        }
+   }
 }
 
 ?>
