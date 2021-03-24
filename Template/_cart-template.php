@@ -9,7 +9,7 @@
         <?PHP 
             foreach($product->getData('cart') as $item) :
                 $cart = $product->getProduct($item['item_id']);
-                array_map(function ($item) {
+                $subTotal[] = array_map(function ($item) {
         ?>
         <div class="row border-top py-3 my-4">
             <div class="col-sm-2">
@@ -53,6 +53,7 @@
         </div>
         <!--!Cart item-->
         <?PHP
+            return $item['item_price'];
             }, $cart); // closing array_map function
             endforeach;
         ?>
@@ -63,7 +64,7 @@
     <div class="sub-total border mt-2 text-center">
         <h6 class="font-rale font-size-12 text-success py-3"><i class="fas fa-check"></i>Your order is eligible for free delivery</h6>
         <div class="border-top py-4">
-        <h5 class="font-baloo font-size-20">Subtotal (2 item):&nbsp;&nbsp;<span class="text-danger">Rs</span><span class="text-danger" id="deal-price">1,42,000</span></h5>
+        <h5 class="font-baloo font-size-20">Subtotal (<?PHP echo count($subTotal); ?> item):&nbsp;&nbsp;<span class="text-danger">Rs&nbsp;</span><span class="text-danger" id="deal-price"><?PHP echo isset($subTotal) ? $Cart->getSum($subTotal) : 0; ?></span></h5>
         <button type="submit" class="btn btn-warning mt-3">Proceed to Buy</button>
         </div>
     </div>
