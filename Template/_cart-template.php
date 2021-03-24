@@ -1,3 +1,11 @@
+<?PHP
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (isset($_POST['delete-cart-submit'])) {
+            $deletedRecord = $Cart->deleteCart($_POST['item_id']);
+        }
+    }
+?>
+
 <!--Shopping Cart-->
 <section id="cart" class="py-3">
 <div class="container-fluid w-75">
@@ -39,7 +47,10 @@
                         <input type="text" data-id="pro1" class="qty_input border px-2 bg-light w-100 text-center" disabled value="1" placeholder="1">
                         <button class="qty-down border bg-light" data-id="pro1"><i class="fas fa-angle-down"></i></button>
                     </div>
-                    <button type="submit" class="btn font-baloo text-danger px-3 border-right">Delete</button>
+                    <form method="post">
+                        <input type="hidden" value="<?PHP echo $item['item_id'] ?? 0; ?>" name="item_id">
+                        <button name="delete-cart-submit" type="submit" class="btn font-baloo text-danger px-3 border-right">Delete</button>
+                    </form>
                     <button type="submit" class="btn font-baloo text-danger px-3">Save for Later</button>
                 </div>
                 <!--!Product Qty-->
@@ -61,13 +72,13 @@
 
     <!--Subtotal Section-->
     <div class="col-sm-3">
-    <div class="sub-total border mt-2 text-center">
-        <h6 class="font-rale font-size-12 text-success py-3"><i class="fas fa-check"></i>Your order is eligible for free delivery</h6>
-        <div class="border-top py-4">
-        <h5 class="font-baloo font-size-20">Subtotal (<?PHP echo count($subTotal); ?> item):&nbsp;&nbsp;<span class="text-danger">Rs&nbsp;</span><span class="text-danger" id="deal-price"><?PHP echo isset($subTotal) ? $Cart->getSum($subTotal) : 0; ?></span></h5>
-        <button type="submit" class="btn btn-warning mt-3">Proceed to Buy</button>
+        <div class="sub-total border mt-2 text-center">
+            <h6 class="font-rale font-size-12 text-success py-3"><i class="fas fa-check"></i>Your order is eligible for free delivery</h6>
+            <div class="border-top py-4">
+            <h5 class="font-baloo font-size-20">Subtotal (<?PHP echo isset($subTotal) ? count($subTotal) : 0; ?> item):&nbsp;&nbsp;<span class="text-danger">Rs&nbsp;</span><span class="text-danger" id="deal-price"><?PHP echo isset($subTotal) ? $Cart->getSum($subTotal) : 0; ?></span></h5>
+            <button type="submit" class="btn btn-warning mt-3">Proceed to Buy</button>
+            </div>
         </div>
-    </div>
     </div>
     <!--!Subtotal Section-->
 
