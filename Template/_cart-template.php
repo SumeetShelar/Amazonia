@@ -45,9 +45,9 @@
                 <!--Product Qty-->
                 <div class="qty pt-2 d-flex">
                     <div class="d-flex font-rale w-25">
-                        <button class="qty-up border bg-light" data-id="pro1"><i class="fas fa-angle-up"></i></button>
-                        <input type="text" data-id="pro1" class="qty_input border px-2 bg-light w-100 text-center" disabled value="1" placeholder="1">
-                        <button class="qty-down border bg-light" data-id="pro1"><i class="fas fa-angle-down"></i></button>
+                        <button class="qty-up border bg-light" data-id="<?PHP echo $item['item_id'] ?? '0'; ?>"><i class="fas fa-angle-up"></i></button>
+                        <input type="text" data-id="<?PHP echo $item['item_id'] ?? '0'; ?>" class="qty_input border px-2 bg-light w-100 text-center" disabled value="1" placeholder="1">
+                        <button class="qty-down border bg-light" data-id="<?PHP echo $item['item_id'] ?? '0'; ?>"><i class="fas fa-angle-down"></i></button>
                     </div>
                     <form method="post">
                         <input type="hidden" value="<?PHP echo $item['item_id'] ?? 0; ?>" name="item_id">
@@ -60,7 +60,7 @@
             </div>
             <div class="col-sm-2">
                 <div class="font-size-20 text-danger font-baloo">
-                    Rs&nbsp;<span class="product_price"><?PHP echo $item['item_price'] ?? '0'; ?></span>
+                    Rs&nbsp;<span data-id="<?PHP echo $item['item_id'] ?? '0'; ?>" class="product_price" ><?PHP echo $item['item_price'] ?? '0'; ?></span>
                 </div>
             </div>
         </div>
