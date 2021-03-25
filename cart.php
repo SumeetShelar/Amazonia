@@ -5,10 +5,13 @@
 ?>
 
 <?PHP
-  /*    include cart-template   */
-  include('Template/_cart-template.php');
-  /*    !include cart-template   */
+  /*    include Cart items if it is not Empty   */
+  count($product->getData('cart')) ? include('Template/_cart-template.php') : include('Template/notfound/_cart-notfound.php');
+  /*    !include Cart items if it is not Empty   */
 
+  /*    include Wishlist if it is not Empty   */
+  count($product->getData('wishlist')) ? include('Template/_wishlist-template.php') : include('Template/notfound/_wishlist-notfound.php');
+  /*    !include Wishlist if it is not Empty   */
 
   /*    include new phones   */
   include('Template/_new-phones.php');
