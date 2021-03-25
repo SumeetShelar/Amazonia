@@ -1,7 +1,22 @@
 <?PHP
-    $item_id = $_GET['item_id'] ?? 1;
+    $itemid = $_GET['item_id'] ?? 1;
     foreach($product->getData() as $item) :
-        if($item['item_id'] == $item_id) :
+        if($item['item_id'] == $itemid) :
+            // request method post
+            if($_SERVER['REQUEST_METHOD'] == "POST") {
+                if(isset($_POST['proceed_submit'])) {
+                    // call method addToCart
+                    $Cart->addToCart($_POST['user_id2'], $_POST['item_id2']);
+                }
+                header("Refresh:0; url=cart.php");
+            }
+            // request method post
+            if($_SERVER['REQUEST_METHOD'] == "POST") {
+                if(isset($_POST['product_submit'])) {
+                    // call method addToCart
+                    $Cart->addToCart($_POST['user_id'], $_POST['item_id']);
+                } 
+            }  
 ?> 
 
 <!--Product-->
@@ -12,10 +27,31 @@
             <img src="<?PHP echo $item['item_image'] ?? "./assets/products/1.png"; ?>" alt="product" class="img-fluid">
             <div class="form-row pt-4 font-size-16 font-baloo">
                 <div class="col">
-                    <button type="submit" class="btn btn-danger form-control">Proceed to Buy</button>
+                <form method="post">
+                    <input type="hidden" name="user_id2" value="<?PHP echo 2; ?>">
+                    <input type="hidden" name="item_id2" value="<?PHP echo $item['item_id'] ?? 1; ?>">
+                    <?PHP
+                        if(in_array($item['item_id'], $Cart->getCartid($product->getData('cart')) ?? [])) {
+                            echo '<button type="submit" class="btn btn-danger form-control" >Proceed to Buy</button>';
+                        } else {
+                            echo '<button type="submit" name="proceed_submit" class="btn btn-danger form-control">Proceed to Buy</button>';
+                        }
+                    ?>
+                </form>    
+
                 </div>
                 <div class="col">
-                    <button type="submit" class="btn btn-warning form-control">Add to cart</button>
+                    <form method="post" >
+                    <input type="hidden" name="user_id" value="<?PHP echo 2; ?>">
+                    <input type="hidden" name="item_id" value="<?PHP echo $item['item_id'] ?? 1; ?>">
+                    <?PHP
+                        if(in_array($item['item_id'], $Cart->getCartid($product->getData('cart')) ?? [])) {
+                            echo '<button type="submit" disabled class="btn btn-success font-size-16 form-control">In the Cart</button>';
+                        } else {
+                            echo '<button type="submit" name="product_submit" class="btn btn-warning font-size-16 form-control">Add to Cart</button>';
+                        }
+                    ?> 
+                    </form> 
                 </div>
             </div>
         </div>

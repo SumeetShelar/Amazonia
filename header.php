@@ -28,7 +28,7 @@
                 <p class="font-rale font-size-12 text-black-50 m-0">Brigade Gateway, 8th floor, 26/1, Dr. Rajkumar Road, Malleshwaram(W), Bangalore-560055, Karnataka, India.</p>
                 <div class="font-rale font-size-14">
                     <a href="" class="px-3 border-right border-left text-dark">Login</a>
-                    <a href="" class="px-3 border-right text-dark">Wishlist (0)</a>
+                    <a href="" class="px-3 border-right text-dark">Wishlist (<span><?PHP echo count($product->getData('wishlist')); ?></span>)</a>
                 </div>
             </div>
 
